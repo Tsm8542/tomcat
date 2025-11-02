@@ -8,7 +8,7 @@ pipeline {
     
     environment {
         // Define environment variables for Tomcat
-        WAR_FILE = 'target\\exp5.war' // Path to the generated WAR file (use forward slashes)
+        WAR_FILE = 'target\\demo.war' // Path to the generated WAR file (use forward slashes)
         TOMCAT_URL = 'http://localhost:7080' // Tomcat server URL
         TOMCAT_USER = 'tomcat' // Tomcat Manager username
         TOMCAT_PASSWORD = '1234' // Tomcat Manager password
@@ -42,7 +42,7 @@ pipeline {
                         bat """
                             curl --upload-file "${warFilePath}" ^
                             --user ${TOMCAT_USER}:${TOMCAT_PASSWORD} ^
-                            "${TOMCAT_URL}/manager/text/deploy?path=/roshambo&update=true"
+                            "${TOMCAT_URL}/manager/text/deploy?path=/demo&update=true"
                         """
                     } else {
                         error('WAR file not found! Build might have failed.')
